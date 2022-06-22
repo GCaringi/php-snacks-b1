@@ -3,7 +3,7 @@
 /*-------------
      Snack 1 
 --------------*/
-header('Content-type: text/plain');
+// header('Content-type: text/plain');
 echo "Snack-1\n";
 $day = [
     [
@@ -47,6 +47,18 @@ for ($i = 0; $i < count($day); $i++){
 /*-------------
      Snack 2 
 --------------*/
+$name = $_GET['name'];
+$mail = $_GET['mail'];
+$age = $_GET['age'];
 
+$name_pattern = "/^([a-z])[a-z]+([a-z])$/i";
+$mail_pattern = "/^(\w+)@{1}(\w+)\.{1}(\D{2,3}$)/i";
+$age_pattern = "/^[1]*[1-9]{0,1}[0-9]$/";
+
+if (preg_match($name_pattern, $name) && preg_match($mail_pattern, $mail) && preg_match($age_pattern, $age)){
+    echo "Accesso Riuscito";
+}else{
+    echo "Accesso Negato";
+}
 
 ?>
